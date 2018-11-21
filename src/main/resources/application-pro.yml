@@ -1,0 +1,79 @@
+#服务配置
+server:
+  port: 8090
+
+#春天配置
+spring:
+  application:
+    name: webapi
+  mvc:
+    static-path-pattern: /file/**
+  resources:
+    static-locations: file:/Users/me/Desktop/data
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    mapperLocations: classpath:/mapper/*.xml
+    configLocation: classpath:/mybatis-config.xml
+    url: jdbc:mysql://localhost:3306/festech?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+    minIdle: 5
+    maxActive: 100
+    initialSize: 10
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 50
+    removeAbandoned: true
+    filters: stat
+
+#连接池设置
+druid:
+  initialSize: 3
+  minIdle: 3
+  maxActive: 20
+  minEvictableIdleTimeMillis: 300000
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  timeBetweenEvictionRunsMillis: 60000
+  maxWait: 60000
+
+##mybatis设置(包括分页配置)
+mybatis:
+  mapperLocations: classpath:/mapper/*.xml
+  typeAliasesPackage: com.grownest.app.bean
+  mapperScanPackage: com.grownest.app.mapper
+  configLocation: classpath:/mybatis-config.xml
+mapper:
+  mappers: com.festech.webapi.base.utils.MyMapper
+  not-empty: false
+  identity: MYSQL
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+#日志设置
+logging:
+  config: classpath:logback-springboot.xml
+  path: /opt/projects/${spring.application.name}/log
+  level:
+    org:
+      springframework:
+        data: debug
+    com:
+      festech:
+        webapi:
+          mapper: debug
+
+#项目内设置
+project:
+
