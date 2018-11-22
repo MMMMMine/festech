@@ -48,8 +48,8 @@ druid:
 ##mybatis设置(包括分页配置)
 mybatis:
   mapperLocations: classpath:/mapper/*.xml
-  typeAliasesPackage: com.grownest.app.bean
-  mapperScanPackage: com.grownest.app.mapper
+  typeAliasesPackage: com.festech.webapi.bean
+  mapperScanPackage: com.festech.webapi.mapper
   configLocation: classpath:/mybatis-config.xml
 mapper:
   mappers: com.festech.webapi.base.utils.MyMapper

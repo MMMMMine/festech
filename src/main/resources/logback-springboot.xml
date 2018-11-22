@@ -128,7 +128,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <!--</triggeringPolicy>-->
     </appender>
 
-    <logger name="com.grownest.calculater" level="DEBUG">
+    <logger name="com.festech.webapi" level="DEBUG">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE-INFO"/>
         <appender-ref ref="FILE-ERROR"/>

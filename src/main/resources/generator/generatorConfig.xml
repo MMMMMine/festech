@@ -37,7 +37,7 @@
         <!--<table tableName="bb_user_received_comment_info">-->
         <!--</table>-->
 
-        <table tableName="manage_admin_info"></table>
+        <table tableName="infos"></table>
         <!--<table tableName="order_black_pipe_info"></table>-->
         <!--<table tableName="order_pay_info"></table>-->
 

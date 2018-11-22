@@ -38,7 +38,7 @@ public class WebLogAspect {
      * ~ .. 匹配任意数量的参数.
      */
 
-    @Pointcut("execution(public * com.festech.webapi.controller.*.*.*(..))")
+    @Pointcut("execution(public * com.festech.webapi.controller.*.*(..))")
     public void webLog() {
     }
 

@@ -1,0 +1,38 @@
+package com.festech.webapi.service.impl;
+
+import com.festech.webapi.base.result.MyPageInfo;
+import com.festech.webapi.base.result.ResultDO;
+import com.festech.webapi.domain.Infos;
+import com.festech.webapi.repo.IInfosRepo;
+import com.festech.webapi.service.IWebSerivce;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("webService")
+public class WebSerivceImpl implements IWebSerivce {
+
+    @Autowired
+    private IInfosRepo infosRepo;
+
+    @Override
+    public ResultDO searchInfos(String title) {
+        ResultDO resultDO = new ResultDO();
+
+        Infos infos = infosRepo.selectInfosByTitle(title);
+
+        resultDO.setData(infos);
+        resultDO.setSuccess(true);
+        return resultDO;
+    }
+
+    @Override
+    public ResultDO searchInfosList(String type, int pageNum, int pageSize) {
+        ResultDO resultDO = new ResultDO();
+
+        MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type,pageNum,pageSize);
+
+        resultDO.setData(myPageInfo);
+        resultDO.setSuccess(true);
+        return resultDO;
+    }
+}

@@ -4,6 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @Configuration
-@MapperScan(basePackages = "com.grownest.app.mapper")
+@MapperScan(basePackages = "com.festech.webapi.mapper")
 public class MapperScanConfig {
 }

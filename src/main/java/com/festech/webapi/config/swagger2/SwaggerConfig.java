@@ -43,7 +43,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     public Docket createRestApi() {
 
         ParameterBuilder signParams = new ParameterBuilder();
-//        signParams.name("X-Sign").description("签名").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        signParams.name("X-Sign").description("签名").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
 
         List<Parameter> headerParams = new ArrayList<>();
         headerParams.add(signParams.build());
@@ -57,8 +57,8 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 .select()
                 .paths(PathSelectors.any())
                 .apis(RequestHandlerSelectors.basePackage("com.festech.webapi.controller"))
-                .build()
-                .globalOperationParameters(headerParams);
+                .build();
+//                .globalOperationParameters(headerParams);
 
     }
 
