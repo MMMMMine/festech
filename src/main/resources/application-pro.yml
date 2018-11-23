@@ -76,4 +76,6 @@ logging:
 
 #项目内设置
 project:
+  upload.path: /file
+  base.url: http://119.23.73.34/file
 
