@@ -17,7 +17,7 @@ public class Infos {
 
     private String title;
 
-    private String type;
+    private Integer type;
 
     private String cover;
 

@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 
@@ -34,7 +35,7 @@ public class InfosRepo extends BaseRepo<Infos>
     }
 
     @Override
-    public MyPageInfo selectInfosListByType(String type, int pageNum, int pageSize) {
+    public MyPageInfo selectInfosListByType(int type, int pageNum, int pageSize) {
         Example example = new Example(Infos.class);
 
         Example.Criteria criteria = example.createCriteria();
@@ -52,5 +53,11 @@ public class InfosRepo extends BaseRepo<Infos>
 
         return myPageInfo;
 
+    }
+
+    @Override
+    @Cacheable(cacheNames = "selectInfosById" ,key = "#p0")
+    public Infos selectInfosById(int id) {
+        return infosMapper.selectByPrimaryKey(id);
     }
 }

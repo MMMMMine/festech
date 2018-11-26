@@ -26,7 +26,7 @@ public class WebSerivceImpl implements IWebSerivce {
     }
 
     @Override
-    public ResultDO searchInfosList(String type, int pageNum, int pageSize) {
+    public ResultDO searchInfosList(int type, int pageNum, int pageSize) {
         ResultDO resultDO = new ResultDO();
 
         MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type,pageNum,pageSize);

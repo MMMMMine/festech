@@ -7,5 +7,7 @@ public interface IInfosRepo extends IBaseRepo<Infos> {
 
     Infos selectInfosByTitle(String title);
 
-    MyPageInfo selectInfosListByType(String type, int pageNum, int pageSize);
+    MyPageInfo selectInfosListByType(int type, int pageNum, int pageSize);
+
+    Infos selectInfosById(int id);
 }

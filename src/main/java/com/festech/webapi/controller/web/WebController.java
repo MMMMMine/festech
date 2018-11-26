@@ -36,12 +36,12 @@ public class WebController {
     @GetMapping(value = "/v1/infos_list/search")
     @ApiOperation(value = "查询接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "type", value = "类别", required = true, paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "type", value = "类别", required = true, paramType = "query", dataType = "Integer"),
             @ApiImplicitParam(name = "pageNum", value = "页码", required = true, paramType = "query", dataType = "Integer"),
             @ApiImplicitParam(name = "pageSize", value = "每页大小", required = true, paramType = "query", dataType = "Integer"),
     })
     public ResultDO searchInfosList(
-            @RequestParam String type,
+            @RequestParam int type,
             @RequestParam int pageNum,
             @RequestParam int pageSize
     ) throws AppWebException {

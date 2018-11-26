@@ -40,4 +40,16 @@ public class ManageController {
 
         return manageService.queryInfosById(id);
     }
+
+    @GetMapping(value = "/v1/queryInfosListByType")
+    @ApiOperation(value = "查询信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "信息id", required = true, paramType = "query", dataType = "Long"),
+    })
+    public ResultDO queryInfosListByType(
+            @RequestParam int id
+    ) throws AppWebException {
+
+        return manageService.queryInfosListByType(id);
+    }
 }
