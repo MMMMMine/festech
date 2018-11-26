@@ -16,14 +16,12 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-@Api(description = "文件控制器", tags = {"file-controller"})
 public class FileController {
 
     @Autowired
     IFileService fileService;
 
     @PostMapping(value = "/v1/upload_pic")
-    @ApiOperation(value = "上传图片")
     public ResultDO uploadPic(
             @ApiParam(name = "file", value = "图片文件", required = true)
             @RequestParam(name = "file") MultipartFile file
@@ -33,7 +31,6 @@ public class FileController {
     }
 
     @PostMapping(value = "/v1/upload_pic2")
-    @ApiOperation(value = "上传图片")
     public Map uploadPic2(
             @ApiParam(name = "file", value = "图片文件", required = true)
             @RequestParam(name = "file") MultipartFile file

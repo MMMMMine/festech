@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@Api(description = "后台控制器", tags = {"manage-controller"})
 @Validated
 public class ManageController {
 
@@ -20,7 +19,6 @@ public class ManageController {
     private IManageService manageService;
 
     @PostMapping(value = "/v1/addOrUpInfos", consumes = "application/json")
-    @ApiOperation(value = "新增或更新信息")
     public ResultDO addOrUpInfos(
             @RequestBody @ApiParam(name = "新增或更新镀锌管规格对象", value = "传入json格式", required = true)
             @Valid AddOrUpInfosDO addOrUpInfosDO
@@ -30,10 +28,6 @@ public class ManageController {
     }
 
     @GetMapping(value = "/v1/queryInfosById")
-    @ApiOperation(value = "查询信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "信息id", required = true, paramType = "query", dataType = "Long"),
-    })
     public ResultDO queryInfosById(
             @RequestParam int id
     ) throws AppWebException {
@@ -42,14 +36,12 @@ public class ManageController {
     }
 
     @GetMapping(value = "/v1/queryInfosListByType")
-    @ApiOperation(value = "查询信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "信息id", required = true, paramType = "query", dataType = "Long"),
-    })
     public ResultDO queryInfosListByType(
-            @RequestParam int id
+            @RequestParam int type,
+            @RequestParam int pageNum,
+            @RequestParam int pageSize
     ) throws AppWebException {
 
-        return manageService.queryInfosListByType(id);
+        return manageService.queryInfosListByType(type,pageNum,pageSize);
     }
 }

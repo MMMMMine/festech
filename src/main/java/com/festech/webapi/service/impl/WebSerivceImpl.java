@@ -29,7 +29,7 @@ public class WebSerivceImpl implements IWebSerivce {
     public ResultDO searchInfosList(int type, int pageNum, int pageSize) {
         ResultDO resultDO = new ResultDO();
 
-        MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type,pageNum,pageSize);
+        MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type,pageNum,pageSize,1);
 
         resultDO.setData(myPageInfo);
         resultDO.setSuccess(true);

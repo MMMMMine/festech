@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@Api(description = "管理员控制器", tags = {"manage-admin-controller"})
 @Validated
 public class ManageAdminController {
 
@@ -20,7 +19,6 @@ public class ManageAdminController {
     private IAdminService adminService;
 
     @PostMapping(value = "/v1/adminLogin", consumes = "application/json")
-    @ApiOperation(value = "管理员登录")
     public ResultDO adminLogin(
             @RequestBody @ApiParam(name = "管理员登录对象", value = "传入json格式", required = true)
             @Valid AdminLoginDO adminLoginDO
@@ -30,10 +28,6 @@ public class ManageAdminController {
     }
 
     @GetMapping(value = "/v1/queryAdminInfo")
-    @ApiOperation(value = "token查询管理员信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "token", value = "token", required = true, paramType = "query", dataType = "String"),
-    })
     public ResultDO queryAdminInfo(
             @RequestParam String token
     ) throws AppWebException {

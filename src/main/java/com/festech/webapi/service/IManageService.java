@@ -7,4 +7,6 @@ public interface IManageService {
     ResultDO addOrUpInfos(AddOrUpInfosDO addOrUpInfosDO);
 
     ResultDO queryInfosById(int id);
+
+    ResultDO queryInfosListByType(int type, int pageNum, int pageSize);
 }

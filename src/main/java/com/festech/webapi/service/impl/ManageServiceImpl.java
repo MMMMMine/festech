@@ -1,5 +1,6 @@
 package com.festech.webapi.service.impl;
 
+import com.festech.webapi.base.result.MyPageInfo;
 import com.festech.webapi.base.result.ResultDO;
 import com.festech.webapi.controller.manage.requestDO.AddOrUpInfosDO;
 import com.festech.webapi.domain.Infos;
@@ -7,6 +8,8 @@ import com.festech.webapi.repo.IInfosRepo;
 import com.festech.webapi.service.IManageService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,11 +26,12 @@ public class ManageServiceImpl implements IManageService {
 
 
         Infos infos = new Infos();
-        if (infos.getId() == null) {
-            infos.setIsActive(1).setCreateAt(new Date());
-        }
 
         BeanUtils.copyProperties(addOrUpInfosDO, infos);
+
+        if (addOrUpInfosDO.getId() == null) {
+            infos.setIsActive(1).setCreateAt(new Date());
+        }
 
         infosRepo.insertOrUpdate(infos);
 
@@ -42,6 +46,17 @@ public class ManageServiceImpl implements IManageService {
         Infos infos = infosRepo.selectInfosById(id);
 
         resultDO.setData(infos);
+        resultDO.setSuccess(true);
+        return resultDO;
+    }
+
+    @Override
+    public ResultDO queryInfosListByType(int type, int pageNum, int pageSize) {
+        ResultDO resultDO = new ResultDO();
+
+        MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type, pageNum, pageSize, 2);
+
+        resultDO.setData(myPageInfo);
         resultDO.setSuccess(true);
         return resultDO;
     }

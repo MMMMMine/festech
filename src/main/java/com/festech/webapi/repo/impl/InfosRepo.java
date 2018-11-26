@@ -22,27 +22,30 @@ public class InfosRepo extends BaseRepo<Infos>
     private InfosMapper infosMapper;
 
     @Override
+//    @Cacheable(cacheNames = "selectInfosByTitle", key = "#p0")
     public Infos selectInfosByTitle(String title) {
         Example example = new Example(Infos.class);
 
         Example.Criteria criteria = example.createCriteria();
 
         criteria.andEqualTo("title", title);
-        criteria.andEqualTo("isActive",1);
-        criteria.andEqualTo("isPublish",1);
+        criteria.andEqualTo("isActive", 1);
+        criteria.andEqualTo("isPublish", 1);
 
         return infosMapper.selectOneByExample(example);
     }
 
     @Override
-    public MyPageInfo selectInfosListByType(int type, int pageNum, int pageSize) {
+    public MyPageInfo selectInfosListByType(int type, int pageNum, int pageSize, int isPublish) {
         Example example = new Example(Infos.class);
 
         Example.Criteria criteria = example.createCriteria();
 
         criteria.andEqualTo("type", type);
-        criteria.andEqualTo("isActive",1);
-        criteria.andEqualTo("isPublish",1);
+        criteria.andEqualTo("isActive", 1);
+        if (isPublish != 2) {
+            criteria.andEqualTo("isPublish", isPublish);
+        }
 
         PageHelper.startPage(pageNum, pageSize);
         List<Infos> list = infosMapper.selectByExample(example);
@@ -56,7 +59,7 @@ public class InfosRepo extends BaseRepo<Infos>
     }
 
     @Override
-    @Cacheable(cacheNames = "selectInfosById" ,key = "#p0")
+//    @Cacheable(cacheNames = "selectInfosById", key = "#p0")
     public Infos selectInfosById(int id) {
         return infosMapper.selectByPrimaryKey(id);
     }
