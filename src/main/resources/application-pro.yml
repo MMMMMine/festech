@@ -14,9 +14,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     mapperLocations: classpath:/mapper/*.xml
     configLocation: classpath:/mybatis-config.xml
-    url: jdbc:mysql://localhost:3306/festech?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://212.64.35.73:3306/festech?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password:
+    password: Qwe123!@#
     driverClassName: com.mysql.jdbc.Driver
     minIdle: 5
     maxActive: 100
@@ -64,7 +64,7 @@ pagehelper:
 #日志设置
 logging:
   config: classpath:logback-springboot.xml
-  path: /opt/projects/${spring.application.name}/log
+  path: /opt/app/${spring.application.name}/log
   level:
     org:
       springframework:
@@ -77,5 +77,4 @@ logging:
 #项目内设置
 project:
   upload.path: /file
-  base.url: http://119.23.73.34/file
-
+  base.url: http://118.126.99.168/file

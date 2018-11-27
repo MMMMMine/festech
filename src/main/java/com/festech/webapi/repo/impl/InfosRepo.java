@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class InfosRepo extends BaseRepo<Infos>
@@ -62,5 +63,10 @@ public class InfosRepo extends BaseRepo<Infos>
 //    @Cacheable(cacheNames = "selectInfosById", key = "#p0")
     public Infos selectInfosById(int id) {
         return infosMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Map> selectLatestNews() {
+        return infosMapper.selectLatestNews();
     }
 }

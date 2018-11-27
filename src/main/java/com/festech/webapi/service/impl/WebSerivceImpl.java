@@ -8,6 +8,9 @@ import com.festech.webapi.service.IWebSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service("webService")
 public class WebSerivceImpl implements IWebSerivce {
 
@@ -32,6 +35,16 @@ public class WebSerivceImpl implements IWebSerivce {
         MyPageInfo myPageInfo = infosRepo.selectInfosListByType(type,pageNum,pageSize,1);
 
         resultDO.setData(myPageInfo);
+        resultDO.setSuccess(true);
+        return resultDO;
+    }
+
+    @Override
+    public ResultDO queryLatestNews() {
+        ResultDO resultDO = new ResultDO();
+
+        List<Map> latestNews = infosRepo.selectLatestNews();
+        resultDO.setData(latestNews);
         resultDO.setSuccess(true);
         return resultDO;
     }

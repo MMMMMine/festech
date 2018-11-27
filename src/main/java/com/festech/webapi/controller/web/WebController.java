@@ -49,4 +49,11 @@ public class WebController {
         return webSerivce.searchInfosList(type,pageNum,pageSize);
     }
 
+    @GetMapping(value = "/v1/infos/latest_news")
+    @ApiOperation(value = "查询接口")
+    public ResultDO queryLatestNews() throws AppWebException {
+
+        return webSerivce.queryLatestNews();
+    }
+
 }
